@@ -39,7 +39,7 @@ const DesignerSection = () => {
           <div className="designer-content">
             <h3>Designer Uniforms</h3>
             <p>Explore our catalog of professionally designed uniforms for various industries</p>
-            <a href="#" className="hero-btn">VIEW CATALOG</a>
+            <a href="#contact" className="hero-btn">VIEW CATALOG</a>
           </div>
         </div>
       </div>

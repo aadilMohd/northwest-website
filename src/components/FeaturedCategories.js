@@ -42,7 +42,7 @@ const FeaturedCategories = () => {
               <div className="category-overlay">
                 <h3 className="category-title">{category.title}</h3>
                 <p className="category-description">{category.description}</p>
-                <a href="#" className="category-btn">EXPLORE</a>
+                <a href="#contact" className="category-btn">EXPLORE</a>
               </div>
             </div>
           ))}

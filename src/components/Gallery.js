@@ -24,14 +24,14 @@ const Gallery = () => {
     },
     {
       id: 2,
-      image: 'https://images.unsplash.com/photo-1566677914817-56426959ae9c?q=80&w=2070&auto=format&fit=crop',
+      image: 'https://lodgingmagazine.com/wp-content/uploads/2019/04/front-desk-staff-uniform-iStock-941785090.jpg',
       title: 'Hotel Staff Uniforms',
       category: 'hospitality',
       description: 'Elegant designs for hotel staff across departments'
     },
     {
       id: 3,
-      image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?q=80&w=1974&auto=format&fit=crop',
+      image: 'https://inclusive-solutions.com/wp-content/uploads/2021/12/iStock-1047620596.jpg.webp',
       title: 'School Uniforms',
       category: 'school',
       description: 'Comfortable and durable school uniforms for all ages'
