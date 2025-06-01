@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navbar from './components/Navbar';
+import HeroSlider from './components/HeroSlider';
+import FeaturedCategories from './components/FeaturedCategories';
+import DesignerSection from './components/DesignerSection';
+import AboutSection from './components/AboutSection';
+import TestimonialsSection from './components/TestimonialsSection';
+import ClientsSection from './components/ClientsSection';
+import ContactSection from './components/ContactSection';
+import Footer from './components/Footer';
+import './styles/globals.css';
+import Gallery3D from './components/Gallery3D';
+import Gallery, {GridGallery} from './components/Gallery';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="font-sans bg-white">
+      <Navbar />
+       <HeroSlider />
+      <FeaturedCategories />
+      <DesignerSection />
+      < Gallery/>
+      <ClientsSection />
+      <AboutSection />
+      <TestimonialsSection />  
+    <ContactSection />
+      <Footer />
+    
     </div>
   );
-}
+};
 
 export default App;
