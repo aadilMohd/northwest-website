@@ -15,7 +15,7 @@ const Footer = () => {
           <div>
             <h3 className="footer-brand">NORTHWEST</h3>
             <p className="footer-text">
-              Quality textiles and uniform solutions since 2010, providing premium garments for all industries with exceptional craftsmanship.
+              Quality textiles and uniform solutions since 1990, providing premium garments for all industries with exceptional craftsmanship.
             </p>
             <div className="social-icons">
               <a href="#" className="social-icon">
