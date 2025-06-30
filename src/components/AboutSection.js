@@ -46,7 +46,7 @@ const AboutSection = () => {
                 challenges of both retail textile needs and the uniform requirements of various industries.
               </p>
               <p className="about-text">
-                The foundation of Northwest goes back over 15 years when we started as a small family business
+                The foundation of Northwest goes back over 30 years when we started as a small family business
                 with an eye for perfection. We've devoted time and energy in perfecting garment cuts, developing
                 and delivering artful, durable and well-crafted textiles.
               </p>
