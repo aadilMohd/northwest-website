@@ -5,6 +5,19 @@ const Gallery = () => {
   const [activeTab, setActiveTab] = useState('all');
   const [showLightbox, setShowLightbox] = useState(false);
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  React.useEffect(() => {
+    setCurrentIndex(0); // Reset slider when tab changes
+  }, [activeTab]);
   
   const categories = [
     { id: 'all', name: 'All' },
@@ -87,6 +100,10 @@ const Gallery = () => {
   const filteredItems = activeTab === 'all' 
     ? galleryItems 
     : galleryItems.filter(item => item.category === activeTab);
+
+  const goToPrev = () => setCurrentIndex((prev) => prev === 0 ? filteredItems.length - 1 : prev - 1);
+  const goToNext = () => setCurrentIndex((prev) => prev === filteredItems.length - 1 ? 0 : prev + 1);
+  const goToIndex = (idx) => setCurrentIndex(idx);
   
   return (
     <section id="gallery" className="gallery-section">
@@ -109,29 +126,124 @@ const Gallery = () => {
           ))}
         </div>
         
-        <div className="gallery-grid">
-          {filteredItems.map(item => (
-            <div key={item.id} className="gallery-item">
-              <div className="gallery-image" onClick={() => openLightbox(item)}>
-                <img src={item.image} alt={item.title} />
-                <div className="gallery-overlay">
-                  <div className="gallery-zoom">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                      <line x1="11" y1="8" x2="11" y2="14"></line>
-                      <line x1="8" y1="11" x2="14" y2="11"></line>
-                    </svg>
+        {/* Gallery grid or carousel */}
+        {isMobile ? (
+          <div style={{ position: 'relative', width: '100%', minHeight: '350px' }}>
+            <div style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+              <button onClick={goToPrev} style={{
+                background: 'rgba(0,0,0,0.5)',
+                border: 'none',
+                borderRadius: '50%',
+                width: 36,
+                height: 36,
+                color: '#fff',
+                fontSize: 24,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'absolute',
+                left: 8,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 2,
+                cursor: 'pointer',
+              }} aria-label="Previous">
+                &#8592;
+              </button>
+              <div style={{ width: '100%' }}>
+                <div style={{
+                  minWidth: '80vw',
+                  maxWidth: '90vw',
+                  margin: '0 auto',
+                  background: '#fff',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 6px rgba(0,0,0,0.08)',
+                  overflow: 'hidden',
+                  transition: 'all 0.4s cubic-bezier(.4,0,.2,1)',
+                }}>
+                  <div className="gallery-image" onClick={() => openLightbox(filteredItems[currentIndex])}>
+                    <img src={filteredItems[currentIndex].image} alt={filteredItems[currentIndex].title} />
+                    <div className="gallery-overlay">
+                      <div className="gallery-zoom">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="11" cy="11" r="8"></circle>
+                          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                          <line x1="11" y1="8" x2="11" y2="14"></line>
+                          <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="gallery-content">
+                    <h3>{filteredItems[currentIndex].title}</h3>
+                    <p>{filteredItems[currentIndex].description}</p>
                   </div>
                 </div>
               </div>
-              <div className="gallery-content">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
+              <button onClick={goToNext} style={{
+                background: 'rgba(0,0,0,0.5)',
+                border: 'none',
+                borderRadius: '50%',
+                width: 36,
+                height: 36,
+                color: '#fff',
+                fontSize: 24,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'absolute',
+                right: 8,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 2,
+                cursor: 'pointer',
+              }} aria-label="Next">
+                &#8594;
+              </button>
             </div>
-          ))}
-        </div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16, gap: 8 }}>
+              {filteredItems.map((_, idx) => (
+                <div key={idx} onClick={() => goToIndex(idx)} style={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: '50%',
+                  background: idx === currentIndex ? '#000' : '#ccc',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s',
+                }} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="gallery-grid">
+            {filteredItems.map(item => (
+              <div key={item.id} className="gallery-item">
+                <div className="gallery-image" onClick={() => openLightbox(item)}>
+                  <img src={item.image} alt={item.title} />
+                  <div className="gallery-overlay">
+                    <div className="gallery-zoom">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div className="gallery-content">
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
         
         {showLightbox && (
           <div className="lightbox" onClick={closeLightbox}>
