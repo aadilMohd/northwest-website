@@ -46,13 +46,10 @@ const AboutSection = () => {
                 challenges of both retail textile needs and the uniform requirements of various industries.
               </p>
               <p className="about-text">
-                The foundation of Northwest goes back over 30 years when we started as a small family business
-                with an eye for perfection. We've devoted time and energy in perfecting garment cuts, developing
-                and delivering artful, durable and well-crafted textiles.
+                The company's journey began over 30 years ago as a small family business with a focus on perfection, founded by Akbar Omar. The company has dedicated significant time and effort to perfecting garment cuts and developing artful, durable, and well-crafted textiles.
               </p>
               <p className="about-text">
-                Today, we proudly serve both individual customers and large institutional clients with the
-                same dedication to quality and customer satisfaction.
+                Today, under the leadership of current managing director Mohammed Thahir Akbar, Northwest continues to serve individual customers and large institutional clients with unwavering dedication to quality and customer satisfaction.
               </p>
               <p className="about-text">
                 Our team of experienced designers and tailors work closely with clients to understand their specific
