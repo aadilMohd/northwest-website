@@ -15,8 +15,8 @@ import Contact from './pages/Contact';
 // Import your global styles
 import './styles/globals.css';
 
-// You will need to install react-router-dom and react-helmet
-// npm install react-router-dom react-helmet
+// You will need to install react-router-dom, react-helmet, and react-router-hash-link
+// npm install react-router-dom react-helmet react-router-hash-link
 
 const App = () => {
   return (

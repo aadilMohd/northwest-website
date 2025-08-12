@@ -1,26 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link'; // Import HashLink
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
-
+  
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+  
+  // These links now point to hashes on the homepage
   const menuItems = [
-    { path: '/', label: 'Home' },
-    { path: '/suits-and-tailoring-madurai', label: 'Suits & Tailoring' },
-    { path: '/uniforms-in-tamilnadu', label: 'Uniforms' },
-    { path: '/gallery', label: 'Gallery' },
-    { path: '/about-us', label: 'About' },
-    { path: '/contact-us', label: 'Contact' }
+    { path: '/#catalogue', label: 'Catalogue' },
+    { path: '/#gallery', label: 'Gallery' },
+    { path: '/#clients', label: 'Clients' },
+    { path: '/#about', label: 'About Us' },
+    { path: '/#testimonials', label: 'Testimonials' },
+    { path: '/#contact', label: 'Contact' },
   ];
 
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -80; // Adjust this value to match your navbar height
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+  }
+  
   return (
     <>
       <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -30,10 +44,15 @@ const Navbar = () => {
           <nav>
             <ul className="nav-menu">
               {menuItems.map(item => (
-                <li key={item.path}>
-                  <Link to={item.path} className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}>
+                <li key={item.label}>
+                  <HashLink 
+                    to={item.path} 
+                    className="nav-link"
+                    smooth 
+                    scroll={scrollWithOffset}
+                  >
                     {item.label}
-                  </Link>
+                  </HashLink>
                 </li>
               ))}
             </ul>
@@ -52,10 +71,16 @@ const Navbar = () => {
         
         <ul className="mobile-nav-menu">
            {menuItems.map(item => (
-                <li key={item.path}>
-                  <Link to={item.path} className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
+                <li key={item.label}>
+                  <HashLink 
+                    to={item.path} 
+                    className="mobile-nav-link" 
+                    smooth 
+                    scroll={scrollWithOffset}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     {item.label}
-                  </Link>
+                  </HashLink>
                 </li>
               ))}
         </ul>
