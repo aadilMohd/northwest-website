@@ -9,7 +9,6 @@ const Uniforms = () => {
       <Helmet>
         <title>Best Uniform Manufacturer in Tamil Nadu | North West Madurai</title>
         <meta name="description" content="North West is a leading uniform supplier and manufacturer in Tamil Nadu, providing high-quality corporate, school, and industrial uniforms with custom designs." />
-        <meta name="keywords" content="best uniform in tamil nadu, best uniforms in madurai, corporate uniforms tamil nadu, school uniform manufacturer madurai, industrial uniforms, hospitality uniforms" />
         <link rel="canonical" href="https://northwestmadurai.com/uniforms-in-tamilnadu" />
       </Helmet>
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import suitImage1 from '../images/suits.png';
 import suitImage2 from '../images/suits_2.png';
-import fabricImage from '../images/fabric.png';
 
 const SuitsAndTailoring = () => {
   return (
@@ -10,7 +9,6 @@ const SuitsAndTailoring = () => {
       <Helmet>
         <title>Bespoke Suits & Best Tailoring in Madurai | North West</title>
         <meta name="description" content="Find the best tailoring for men's suits in Madurai. We offer bespoke suits, wedding suits, and formal wear using premium fabrics from Raymond and Grasim." />
-        <meta name="keywords" content="best tailoring in madurai, best suits in madurai, bespoke suits madurai, wedding suits madurai, raymond tailoring madurai, grasim suits madurai" />
         <link rel="canonical" href="https://northwestmadurai.com/suits-and-tailoring-madurai" />
       </Helmet>
       
