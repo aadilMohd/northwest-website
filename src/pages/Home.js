@@ -13,9 +13,14 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Best Suits & Uniforms in Madurai | Raymond & Grasim Dealer | North West</title>
+        {/* === UPDATED TITLE === */}
+        <title>Suits, Uniforms, Casuals, Formals | Grasim, Raymond | Northwest Madurai</title>
+        
         <meta name="description" content="North West is Madurai's leading destination for bespoke suits, custom tailoring, and high-quality corporate & school uniforms. Authorized dealers for Raymond and Grasim." />
-        <meta name="keywords" content="suits in madurai, uniforms in madurai, raymond in madurai, grasim in madurai, tailoring in madurai, north west madurai" />
+        
+        {/* === UPDATED KEYWORDS to match the new title === */}
+        <meta name="keywords" content="suits madurai, uniforms madurai, casuals madurai, formals madurai, grasim madurai, raymond madurai, northwest madurai, best tailoring madurai" />
+        
         <link rel="canonical" href="https://northwestmadurai.com/" />
       </Helmet>
       
@@ -34,4 +39,3 @@ const Home = () => {
 };
 
 export default Home;
-
